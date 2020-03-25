@@ -38,7 +38,7 @@ class HomeFragment : Fragment(), View.OnClickListener { //OnClickListener
     }
 
     override fun onClick(v: View?) { //When click occurs this function is triggered
-        when(v!!.id) { //Check for the id of the view i which click event happened
+        when (v!!.id) { //Check for the id of the view i which click event happened
             R.id.home_next_frag_btn -> goToNextFragment()
         }
     }

@@ -9,9 +9,6 @@ import android.view.ViewGroup
 
 import com.example.navigationcomponent.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class FragmentTwo : Fragment() {
 
     override fun onCreateView(

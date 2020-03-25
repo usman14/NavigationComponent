@@ -25,17 +25,46 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.main_nav_host) //Initialising navController
 
-        appBarConfiguration = AppBarConfiguration.Builder(R.id.threeFragment) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
-            .setDrawerLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
-            .build()
+        appBarConfiguration =
+            AppBarConfiguration.Builder(R.id.threeFragment) //Pass the ids of fragments from nav_graph which you d'ont want to show back button in toolbar
+                .setDrawerLayout(main_drawer_layout) //Pass the drawer layout id from activity xml
+                .build()
 
         setSupportActionBar(main_toolbar) //Set toolbar
 
-        setupActionBarWithNavController(navController, appBarConfiguration) //Setup toolbar with back button and drawer icon according to appBarConfiguration
+        setupActionBarWithNavController(
+            navController,
+            appBarConfiguration
+        ) //Setup toolbar with back button and drawer icon according to appBarConfiguration
 
         visibilityNavElements(navController) //If you want to hide drawer or bottom navigation configure that in this function
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(false);
         getSupportActionBar()!!.setHomeButtonEnabled(false);
+
+        main_navigation_view.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.drawerFragmentOne -> {
+                    navController.navigate(R.id.action_threeFragment_to_DrawerFragmentOne)
+                    main_drawer_layout.closeDrawer(GravityCompat.START);
+                    true
+                }
+
+                R.id.drawerFragmentTwo -> {
+                    navController.navigate(R.id.action_threeFragment_to_DrawerFragmentTwo)
+                    main_drawer_layout.closeDrawer(GravityCompat.START);
+                    true
+                }
+
+                R.id.drawerFragmentThree -> {
+                    navController.navigate(R.id.action_threeFragment_to_DrawerFragmentThree)
+                    true
+                }
+                else -> {
+
+                    false
+                }
+            }
+        }
     }
 
     private fun visibilityNavElements(navController: NavController) {
@@ -60,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showDrawerAndHideBottomBar(){
+    private fun showDrawerAndHideBottomBar() {
         main_bottom_navigation_view?.visibility = View.GONE
         main_navigation_view?.visibility = View.VISIBLE
         main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) //To unlock navigation drawer
@@ -80,7 +109,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavControl() {
-        main_navigation_view?.setupWithNavController(navController) //Setup Drawer navigation with navController
         main_bottom_navigation_view?.setupWithNavController(navController) //Setup Bottom navigation with navController
     }
 

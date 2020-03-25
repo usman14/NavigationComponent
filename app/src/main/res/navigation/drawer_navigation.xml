@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragmentThree"
         android:name="com.example.navigationcomponent.fragments.FragmentThree"
-        android:label="FragmentThree" >
+        android:label="FragmentThree">
         <action
             android:id="@+id/action_fragmentThree_to_profileFragment"
             app:destination="@id/profileFragment" />
