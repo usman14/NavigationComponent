@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_navigation"
+    app:startDestination="@id/fragmentThree">
+
+    <fragment
+        android:id="@+id/fragmentThree"
+        android:name="com.example.navigationcomponent.fragments.FragmentThree"
+        android:label="FragmentThree" >
+        <action
+            android:id="@+id/action_fragmentThree_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <include app:graph="@navigation/drawer_navigation" />
+
+    <!--In the label field of fragment you can give the name that you want to show in the toolbar-->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.navigationcomponent.fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/drawerFragmentTwo"
+        android:name="com.example.navigationcomponent.fragments.DrawerFragmentTwo"
+        android:label="drawer Fragment Two"
+        tools:layout="@layout/fragment_drawer_two" />
+
+    <fragment
+        android:id="@+id/drawerFragmentOne"
+        android:name="com.example.navigationcomponent.fragments.DrawerFragmentOne"
+        android:label="drawerFragment One"
+        tools:layout="@layout/fragment_drawer_one" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.navigationcomponent.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="com.example.navigationcomponent.fragments.FragmentTwo"
+        android:label="Fragment Two"
+        tools:layout="@layout/fragment_two" />
+
+    <fragment
+        android:id="@+id/oneFragment"
+        android:name="com.example.navigationcomponent.fragments.FragmentOne"
+        android:label="Fragment One"
+        tools:layout="@layout/fragment_one" />
+    
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="com.example.navigationcomponent.fragments.FragmentThree"
+        android:label="Fragment Three"
+        tools:layout="@layout/fragment_three">
+        <action
+            android:id="@+id/action_threeFragment_to_DrawerFragmentThree"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/drawerFragmentThree"
+        android:name="com.example.navigationcomponent.fragments.DrawerFragmentThree"
+        android:label="Fragment Drawer Three"
+        tools:layout="@layout/fragment_drawer_three">
+
+    </fragment>
+</navigation>
