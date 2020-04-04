@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             navController,
             appBarConfiguration
         ) //Setup toolbar with back button and drawer icon according to appBarConfiguration
+        main_bottom_navigation_view?.setupWithNavController(navController) //Setup Bottom navigation with navController
 
         visibilityNavElements(navController) //If you want to hide drawer or bottom navigation configure that in this function
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(false);
@@ -76,45 +77,21 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.oneFragment -> hideBothNavigation()
-                R.id.twoFragment -> hideBothNavigation()
-                R.id.threeFragment -> showDrawerAndHideBottomBar()
-                R.id.drawerFragmentOne -> showDrawerAndHideBottomBar()
-                R.id.drawerFragmentTwo -> showDrawerAndHideBottomBar()
-                R.id.drawerFragmentThree -> showDrawerAndHideBottomBar()
-                R.id.profileFragment -> showDrawerAndHideBottomBar()
-                else -> showBothNavigation()
+                R.id.homeFragment -> showBottomBar()
+                else -> hideBottomBar()
             }
         }
 
     }
 
-    private fun showDrawerAndHideBottomBar() {
+    private fun hideBottomBar() { //Hide both drawer and bottom navigation bar
         main_bottom_navigation_view?.visibility = View.GONE
-        main_navigation_view?.visibility = View.VISIBLE
-        main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) //To unlock navigation drawer
     }
 
-    private fun hideBothNavigation() { //Hide both drawer and bottom navigation bar
-        main_bottom_navigation_view?.visibility = View.GONE
-        main_navigation_view?.visibility = View.GONE
-        main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED) //To lock navigation drawer so that it don't respond to swipe gesture
-    }
-
-    private fun showBothNavigation() {
+    private fun showBottomBar() {
         main_bottom_navigation_view?.visibility = View.VISIBLE
-        main_navigation_view?.visibility = View.VISIBLE
-        main_drawer_layout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-        setupNavControl() //To configure navController with drawer and bottom navigation
     }
 
-    private fun setupNavControl() {
-        main_bottom_navigation_view?.setupWithNavController(navController) //Setup Bottom navigation with navController
-    }
-
-    fun exitApp() { //To exit the application call this function from fragment
-        this.finishAffinity()
-    }
 
     override fun onSupportNavigateUp(): Boolean { //Setup appBarConfiguration for back arrow
         return NavigationUI.navigateUp(navController, appBarConfiguration)
